@@ -20,25 +20,41 @@ public class Practica10 {
         boolean exit = false;
         Scanner input;
         int option;
-        FileUtils fileUtils = null;
+        FileUtils fileUtils = FileUtils.instance;//referencia al singleton
         
         while(!exit){
-            println("");
+            println("*********************************************");
+            println("*                MENU PRINCIPAL             *");
+            println("*********************************************");
+            println("* 1) Crear un nuevo archivo                 *");
+            println("* 2) Sobre-escribir un archivo              *");
+            println("* 3) Modificar un archivo                   *");
+            println("* 4) Eliminar un archivo                    *");
+            println("* 0) Terminar el programa                   *");
+            println("*********************************************");
             print("Dame tu opcion: ");
             input = new Scanner(System.in);
             option = input.nextInt();
             switch(option){
                 case 1:
-                    print("Dame el nombre del archivo: ");
-                    fileUtils = new FileUtils(new Scanner(System.in).next());
+                    print("Dame el nombre del archivo que deseas crear: ");
+                    fileUtils.createNewFileWithName(new Scanner(System.in).next());
                     break;
                 case 2:
+                    print("Dame el nombre del archivo que deseas modificar: ");
+                    fileUtils.overWriteFileWithName(new Scanner(System.in).next());
                     break;
                 case 3:
+                    print("Dame el nombre del archivo al que deseas agregar mas cosas: ");
+                    fileUtils.modifyFileWithName(new Scanner(System.in).next());
                     break;
                 case 4:
+                    print("Dame el nombre del archivo a eliminar: ");
+                    fileUtils.deleteFileWithName(new Scanner(System.in).next());
                     break;
                 case 0:
+                    exit = true;
+                    println("Gracias por utilizar el programa");
                     break;
                 default:
                     break;
